@@ -1,2 +1,2 @@
-# vaex_vs_pd
-Vaex versus Pandas
+# Vaex versus pandas for data wrangling and machine learning
+
