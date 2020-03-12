@@ -12,7 +12,7 @@ import xgboost as xgb
 from sklearn import model_selection as skl_ms
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-os.environ['MAX_BATCH_SIZE'] = '32'
+os.environ['MAX_BATCH_SIZE'] = '16'
 import autokeras as ak
 
 
@@ -32,20 +32,20 @@ X_test, y_test = df_pd_test[features], df_pd_test[target_vname]
 # df_vaex_train, df_vaex_test = df_vaex.ml.train_test_split(test_size=0.3, verbose=False)
 
 #%%
-date_time_fmt = "%Y/%m/%d %H:%M:%S"
-start_time = pd.to_datetime("now")
-print("Start time:", start_time.strftime(date_time_fmt))
-
-xgb_clf = xgb.XGBClassifier(tree_method="approx", ntree_limit=10)
-xgb_clf.fit(X_train, y_train, eval_set=[(X_test, y_test)], eval_metric="logloss", early_stopping_rounds=1)
-xgb_evals_result = xgb_clf.evals_result()
-print(xgb_evals_result)
-
-del xgb_clf
-gc.collect()
-
-finish_time = pd.to_datetime("now")
-print("Finish time:", finish_time.strftime(date_time_fmt), "or", (finish_time-start_time).seconds//60, "minutes.")
+# date_time_fmt = "%Y/%m/%d %H:%M:%S"
+# start_time = pd.to_datetime("now")
+# print("Start time:", start_time.strftime(date_time_fmt))
+#
+# xgb_clf = xgb.XGBClassifier(tree_method="approx", ntree_limit=10)
+# xgb_clf.fit(X_train, y_train, eval_set=[(X_test, y_test)], eval_metric="logloss", early_stopping_rounds=1)
+# xgb_evals_result = xgb_clf.evals_result()
+# print(xgb_evals_result)
+#
+# del xgb_clf
+# gc.collect()
+#
+# finish_time = pd.to_datetime("now")
+# print("Finish time:", finish_time.strftime(date_time_fmt), "or", (finish_time-start_time).seconds//60, "minutes.")
 
 #%%
 date_time_fmt = "%Y/%m/%d %H:%M:%S"
