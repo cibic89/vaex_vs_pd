@@ -53,7 +53,7 @@ start_time = pd.to_datetime("now")
 print("Start time:", start_time.strftime(date_time_fmt))
 
 ak_clf = ak.StructuredDataClassifier(max_trials=1, loss='binary_crossentropy', objective="val_loss")
-ak_clf.fit(X_train, y_train, epochs=3, verbose=0, batch_size=16, seed=123)
+ak_clf.fit(X_train, y_train, epochs=3, verbose=0, seed=123)
 print(ak_clf.evaluate(X_test, y_test))
 
 # xgb_clf = xgb.XGBClassifier()
