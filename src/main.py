@@ -8,7 +8,7 @@ import pandas as pd
 # import vaex
 # from IPython.display import display
 # from vaex.ml.sklearn import Predictor
-import xgboost as xgb
+# import xgboost as xgb
 from sklearn import model_selection as skl_ms
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
@@ -53,7 +53,7 @@ start_time = pd.to_datetime("now")
 print("Start time:", start_time.strftime(date_time_fmt))
 
 ak_clf = ak.StructuredDataClassifier(max_trials=1, loss='binary_crossentropy', objective="val_loss")
-ak_clf.fit(X_train, y_train.iloc, epochs=3, verbose=0)  # , workers=4, use_multiprocessing=True)
+ak_clf.fit(X_train, y_train, epochs=3, verbose=1)  # , workers=4, use_multiprocessing=True)
 print(ak_clf.evaluate(X_test, y_test))  # , workers=4, use_multiprocessing=True))
 
 # xgb_clf = xgb.XGBClassifier()
