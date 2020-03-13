@@ -74,16 +74,16 @@ date_time_fmt = "%Y/%m/%d %H:%M:%S"
 start_time = pd.to_datetime("now")
 print("Start time:", start_time.strftime(date_time_fmt))
 
-ak_clf = ak.StructuredDataClassifier(max_trials=10, loss='binary_crossentropy', objective="val_loss", seed=123)
-ak_clf.fit(X_train, y_train, epochs=100, verbose=0)
+ak_clf = ak.StructuredDataClassifier(max_trials=5, loss='binary_crossentropy', objective="val_loss", seed=123)
+ak_clf.fit(X_train, y_train, epochs=50, verbose=0)
 print("AutoKeras logloss on test set:", ak_clf.evaluate(X_test, y_test))
-# AutoKeras logloss on test set:
+# AutoKeras logloss on test set: 0.0038057671467236565
 
 finish_time = pd.to_datetime("now")
 print("Finish time:", finish_time.strftime(date_time_fmt), "or", (finish_time-start_time).seconds//60, "minutes.\n")
 
 #%%
-
+print(type(ak_clf))
 # xgb_clf = xgb.XGBClassifier()
 # vaex_model = Predictor(model=booster, features=features, target=target_vname, prediction_name='pred')
 # vaex_model.fit(df=df_vaex_train)
