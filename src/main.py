@@ -74,8 +74,8 @@ date_time_fmt = "%Y/%m/%d %H:%M:%S"
 start_time = pd.to_datetime("now")
 print("Start time:", start_time.strftime(date_time_fmt))
 
-ak_clf = ak.StructuredDataClassifier(max_trials=100, loss='binary_crossentropy', objective="val_loss", seed=123)
-ak_clf.fit(X_train, y_train, epochs=1000, verbose=0)
+ak_clf = ak.StructuredDataClassifier(max_trials=10, loss='binary_crossentropy', objective="val_loss", seed=123)
+ak_clf.fit(X_train, y_train, epochs=100, verbose=0)
 print("AutoKeras logloss on test set:", ak_clf.evaluate(X_test, y_test))
 # AutoKeras logloss on test set:
 
